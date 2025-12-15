@@ -15,6 +15,10 @@ class MinecraftVersion private constructor(private val major: Int, private val m
         return 0
     }
 
+    operator fun compareTo(other: String): Int {
+        return compareTo(of(other))
+    }
+
     companion object {
         @JvmStatic
         private val VERSION_PATTERN: Pattern = Pattern.compile("([0-9]+)\\.([0-9]+)(?:\\D+([0-9]+))?")
