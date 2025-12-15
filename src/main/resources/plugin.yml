@@ -1,0 +1,4 @@
+name: BubbleOverHead
+version: '0.0.1'
+main: me.thedivazo.bubbleoverhead.BubbleOverHead
+api-version: '1.21'
