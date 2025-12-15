@@ -14,6 +14,8 @@ public record Vector(
     @Serial
     private static final long serialVersionUID = 1;
 
+    public static final Vector ZERO = new Vector(0, 0, 0);
+
     private static final double epsilon = 1.0E-6;
 
     public static double getEpsilon() {
