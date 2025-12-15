@@ -21,6 +21,8 @@ dependencies {
     // Kotlin stdlib
     implementation(kotlin("stdlib"))
 
+    compileOnly("net.dmulloy2:ProtocolLib:5.4.0")
+
     testImplementation(platform("org.junit:junit-bom:6.0.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
