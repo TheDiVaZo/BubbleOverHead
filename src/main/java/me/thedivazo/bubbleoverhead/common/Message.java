@@ -1,9 +1,9 @@
 package me.thedivazo.bubbleoverhead.common;
 
 public interface Message {
-    String plainText();
+    String text();
 
     interface Editable extends Message {
-        void plainText(String text);
+        void text(String text);
     }
 }
