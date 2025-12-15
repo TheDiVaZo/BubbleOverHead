@@ -1,16 +1,17 @@
 package me.thedivazo.bubbleoverhead.common
 
 import java.io.Serializable
+import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class MinecraftVersion private constructor(private val major: Int, private val minor: Int, private val patch: Int) :
     Serializable,
     Comparable<MinecraftVersion> {
-    override operator fun compareTo(o: MinecraftVersion): Int {
-        if (major != o.major) return major - o.major
-        if (minor != o.minor) return minor - o.minor
-        if (patch == -1 || o.patch == -1) return 0
-        if (patch != o.patch) return patch - o.patch
+    override operator fun compareTo(other: MinecraftVersion): Int {
+        if (major != other.major) return major - other.major
+        if (minor != other.minor) return minor - other.minor
+        if (patch == -1 || other.patch == -1) return 0
+        if (patch != other.patch) return patch - other.patch
         return 0
     }
 
@@ -23,11 +24,10 @@ class MinecraftVersion private constructor(private val major: Int, private val m
         fun of(version: String): MinecraftVersion {
             val matcher = VERSION_PATTERN.matcher(version)
 
-            require(matcher.matches()) { "Invalid version: $version" }
+            require(matcher.find()) { "Invalid version: $version" }
             val major = matcher.group(1).toInt()
             val minor = matcher.group(2).toInt()
-            var patch = -1
-            if (matcher.groupCount() > 2) patch = matcher.group(3).toInt()
+            val patch = matcher.group(3)?.toInt() ?: -1
 
             return MinecraftVersion(major, minor, patch)
         }
